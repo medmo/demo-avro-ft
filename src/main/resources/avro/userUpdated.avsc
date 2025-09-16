@@ -1,0 +1,36 @@
+{
+    "type": "record",
+    "name": "UserUpdated",
+    "namespace": "fr.ft.evenement",
+    "doc": "Schéma pour les mises à jour utilisateur FT",
+    "fields": [
+        {
+            "name": "userId",
+            "type": "string",
+            "doc": "ID unique de l'utilisateur FT"
+        },
+        {
+            "name": "action",
+            "type": {
+                "type": "enum",
+                "name": "UserAction",
+                "symbols": ["CREATED", "UPDATED", "DELETED", "SUSPENDED"]
+            },
+            "doc": "Type d'action effectuée sur le compte utilisateur"
+        },
+        {
+            "name": "profile",
+            "type": {
+                "type": "record",
+                "name": "UserProfile",
+                "fields": [
+                    {"name": "email", "type": "string", "doc": "Adresse email professionnelle"},
+                    {"name": "firstName", "type": "string", "doc": "Prénom"},
+                    {"name": "lastName", "type": "string", "doc": "Nom de famille"},
+                    {"name": "age", "type": ["int", "null"], "doc": "Âge en années"},
+                    {"name": "status", "type": "string", "doc": "Statut du compte", "default": "active"}
+                ]
+            }
+        }
+    ]
+}
